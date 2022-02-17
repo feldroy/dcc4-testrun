@@ -23,6 +23,11 @@ urlpatterns = [
         "users/",
         include("everycheese.users.urls", namespace="users"),
     ),
+    path(
+        'cheeses/',
+        include('everycheese.cheeses.urls',
+        namespace='cheeses'),
+    ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
@@ -46,11 +51,6 @@ if settings.DEBUG:
             default_views.page_not_found,
             kwargs={"exception": Exception("Page not Found")},
         ),
-        path(
-            'cheeses/',
-            include('everycheese.cheeses.urls',
-            namespace='cheeses'),
-    ),
         path("500/", default_views.server_error),
     ]
     if "debug_toolbar" in settings.INSTALLED_APPS:

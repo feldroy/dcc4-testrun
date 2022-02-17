@@ -1,14 +1,11 @@
 import pytest
+from django.urls import reverse
 from pytest_django.asserts import assertContains
 
-from django.urls import reverse
-
-from .factories import CheeseFactory
 from ..models import Cheese
-from ..views import (
-    CheeseListView,
-    CheeseDetailView
-)
+from ..views import CheeseDetailView, CheeseListView
+from .factories import CheeseFactory
+
 
 def test_good_cheese_list_view_expanded(rf):
     # Determine the URL 
